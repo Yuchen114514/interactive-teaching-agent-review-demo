@@ -17,7 +17,7 @@ if [[ -z "${EXTERNAL_LLM_API_KEY:-}" ]]; then
   exit 1
 fi
 if [[ ! -x "$artifact_root/.venv/bin/uvicorn" ]]; then
-  echo 'Install the backend first: python3.11 -m venv .venv && .venv/bin/pip install -e ./backend' >&2
+  echo "Install the backend first: python3.11 -m venv .venv && .venv/bin/pip install -e './backend[dev]'" >&2
   exit 1
 fi
 

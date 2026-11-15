@@ -22,7 +22,7 @@ In terminal 1, provide **your own** key and start the backend:
 
 ```bash
 export EXTERNAL_LLM_API_KEY='your-own-key'
-./scripts/run-backend.sh
+bash scripts/run-backend.sh
 ```
 
 In terminal 2, start the frontend:
