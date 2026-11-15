@@ -23,7 +23,7 @@ fi
 
 export APP_ENV=prod
 export DEMO_MODE=true
-export DEMO_AGENT_READY=false
+export DEMO_AGENT_READY=true
 export DATABASE_URL="sqlite:///$runtime_dir/agent.db"
 export TOKEN_SECRET="$(cat "$runtime_dir/token-secret")"
 export EXTERNAL_LLM_BASE_URL="${EXTERNAL_LLM_BASE_URL:-https://api.deepseek.com}"
