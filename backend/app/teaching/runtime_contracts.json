@@ -1,0 +1,247 @@
+{
+  "policies": [
+    "ProblemIntentPolicy",
+    "TeachingPlanPolicy",
+    "PlanRevisionPolicy",
+    "AlgorithmPrimerPolicy",
+    "HintSignalPolicy",
+    "EncouragementFallbackPolicy",
+    "TutorFallbackPolicy",
+    "SpecialistHandoffPolicy",
+    "DiagramRequestPolicy",
+    "MemoryConsolidationPolicy"
+  ],
+  "policy_surfaces": {
+    "ProblemIntentPolicy": {
+      "owner_agent": "ProblemIdentifierAgent",
+      "surface": "intent_detection_fallback",
+      "replacement_target": "ProblemIdentifierAgent.problem_identification",
+      "guardrails": ["no_problem_specific_rules", "explicit_context_wins", "no_static_answer"]
+    },
+    "TeachingPlanPolicy": {
+      "owner_agent": "PlanDecomposerAgent",
+      "surface": "teaching_plan_fallback",
+      "replacement_target": "PlanDecomposerAgent.teaching_plan",
+      "guardrails": ["taxonomy_bounded", "no_static_answer", "no_static_step_chain"]
+    },
+    "PlanRevisionPolicy": {
+      "owner_agent": "PlanRevisionAgent",
+      "surface": "plan_revision_fallback",
+      "replacement_target": "PlanRevisionAgent.plan_revision",
+      "guardrails": ["current_workspace_only", "no_hidden_plan_disclosure", "no_static_answer"]
+    },
+    "AlgorithmPrimerPolicy": {
+      "owner_agent": "AlgorithmPrimerAgent",
+      "surface": "algorithm_primer_fallback",
+      "replacement_target": "AlgorithmPrimerAgent.algorithm_primer",
+      "guardrails": ["taxonomy_bounded", "no_solution_code", "depth_aware"]
+    },
+    "HintSignalPolicy": {
+      "owner_agent": "HintPolicyAgent",
+      "surface": "hint_signal_fallback",
+      "replacement_target": "HintPolicyAgent.hint_policy",
+      "guardrails": ["current_step_only", "repeat_risk_bounded", "no_answer_pattern"]
+    },
+    "EncouragementFallbackPolicy": {
+      "owner_agent": "EncouragementAgent",
+      "surface": "affective_feedback_fallback",
+      "replacement_target": "EncouragementAgent.encouragement",
+      "guardrails": ["no_solution_content", "current_step_only", "specific_feedback_when_progressing"]
+    },
+    "TutorFallbackPolicy": {
+      "owner_agent": "TutorAgent",
+      "surface": "visible_response_fallback",
+      "replacement_target": "TutorAgent.tutor_response",
+      "guardrails": ["no_solution_content", "current_progress_only", "no_unknown_template_fields"]
+    },
+    "SpecialistHandoffPolicy": {
+      "owner_agent": "CodingAgent|DebugAgent|BoardworkAgent|DiagramAgent",
+      "surface": "specialist_handoff_fallback",
+      "replacement_target": "optional_specialist_handoffs",
+      "guardrails": ["current_step_only", "no_final_code", "no_static_answer"]
+    },
+    "DiagramRequestPolicy": {
+      "owner_agent": "DiagramAgent",
+      "surface": "diagram_request_fallback",
+      "replacement_target": "DiagramAgent.diagram_request",
+      "guardrails": ["model_generated_scene", "no_static_layout", "no_static_diagram"]
+    },
+    "MemoryConsolidationPolicy": {
+      "owner_agent": "MemoryConsolidatorAgent",
+      "surface": "memory_candidate_fallback",
+      "replacement_target": "MemoryConsolidatorAgent.memory_candidates",
+      "guardrails": ["user_toggle_respected", "no_solution_content", "quality_challenge_aware"]
+    }
+  },
+  "supervisor": {
+    "topology_policy": "DefaultSupervisorTopologyPolicy",
+    "blackboard_fields": ["topology_decision", "routing_decisions"],
+    "scheduler": {
+      "primary_interface": "supervisor_schedule",
+      "compatibility_interfaces": ["supervisor_route", "supervisor_topology"],
+      "topology_runtime_unified": true,
+      "execution_profile": "hybrid_core_sequential_optional_parallel",
+      "supervisor_bottleneck": "bounded_two_phase_scheduler_provider_calls",
+      "provider_call_model": "two_phase_schedule_decisions",
+      "decision_phases": ["topology", "runtime"],
+      "max_serial_provider_calls": 2,
+      "interface_consolidation": "primary_supervisor_schedule_with_route_topology_compat",
+      "interface_migration_status": {
+        "primary_interface": "supervisor_schedule",
+        "compatibility_status": "supported_for_transition",
+        "migration_target": "supervisor_schedule",
+        "retirement_condition": "schedule_provider_covers_topology_and_runtime",
+        "interfaces": [
+          {
+            "capability": "supervisor_route",
+            "decision_phase": "runtime",
+            "status": "compatibility",
+            "replacement": "supervisor_schedule"
+          },
+          {
+            "capability": "supervisor_topology",
+            "decision_phase": "topology",
+            "status": "compatibility",
+            "replacement": "supervisor_schedule"
+          }
+        ]
+      },
+      "bottleneck_control": "bounded_provider_timeout_with_policy_fallback",
+      "bottleneck_mitigations": [
+        "bounded_supervisor_provider_timeout",
+        "policy_fallback_without_provider",
+        "early_readonly_core_prewarm",
+        "conditional_plan_revision_skip",
+        "parallel_hint_encouragement_response_agents",
+        "prewarmed_parallel_optional_specialists"
+      ],
+      "core_execution": "sequential_core_with_readonly_and_response_prewarm",
+      "early_prewarm_agents": [
+        "MemoryManagerAgent",
+        "MemoryConsolidatorAgent",
+        "AlgorithmIdentifierAgent"
+      ],
+      "conditional_skip_agents": ["PlanRevisionAgent"],
+      "conditional_skip_policy": "skip_plan_revision_without_active_plan_or_current_step",
+      "response_parallel_agents": ["HintPolicyAgent", "EncouragementAgent"],
+      "response_parallelism": {
+        "strategy": "parallel_hint_and_encouragement_provider_prewarm",
+        "max_parallel_agents": 2,
+        "side_effects_deferred_until_ready": true,
+        "fallback_policy": "rerun_hint_aware_encouragement_when_prewarm_unavailable"
+      },
+      "optional_execution": "prewarmed_parallel_optional_specialists",
+      "optional_parallelism": {
+        "strategy": "prewarm_then_admit",
+        "prewarm_before_runtime_route": true,
+        "side_effects_deferred_until_admitted": true
+      },
+      "final_admission_policy": "supervisor_runtime_plan_gates_optional_side_effects",
+      "trace_fields": [
+        "quality_flag_count",
+        "prewarmed_optional_agent_count",
+        "rejection_reason",
+        "timeout_ms"
+      ]
+    },
+    "context_quality": {
+      "downstream_flags_enabled": true,
+      "blackboard_entry_type": "agent_quality_flag",
+      "supervisor_feedback_field": "upstream_quality_flags",
+      "cache_invalidation_enabled": true,
+      "review_policy": "downstream_agents_may_flag_upstream_outputs",
+      "reviewing_payload_fields": [
+        "flagged_agent",
+        "severity",
+        "reason",
+        "suggested_action",
+        "reviewing_agent"
+      ]
+    },
+    "fallback_visibility": {
+      "visible_in_tester_ui": true,
+      "ui_trace_field": "fallback_reason",
+      "timeout_rejection_field": "rejection_reason"
+    }
+  },
+  "acceptance": {
+    "performance_summary": {
+      "source": "mock_student_acceptance.performance",
+      "history_endpoint": "/api/agents/v2/acceptance/runs",
+      "latency_fields": [
+        "total_trace_latency_ms",
+        "max_turn_trace_latency_ms",
+        "p95_turn_trace_latency_ms",
+        "max_visible_answer_latency_ms",
+        "p95_visible_answer_latency_ms",
+        "turn_latency_budget_ms",
+        "over_budget_turn_count",
+        "within_turn_latency_budget",
+        "visible_answer_first_turn_budget_ms",
+        "visible_answer_followup_budget_ms",
+        "over_visible_answer_budget_turn_count",
+        "within_visible_answer_latency_budget"
+      ],
+      "provider_diagnostic_fields": [
+        "total_provider_payload_count",
+        "total_provider_prompt_tokens",
+        "total_provider_completion_tokens",
+        "total_provider_tokens"
+      ]
+    }
+  },
+  "streaming": {
+    "transport": "sse",
+    "progress_event_type": "progress",
+    "partial_response_event_type": "partial_response",
+    "final_event_type": "final",
+    "visible_answer_metric": "v2_stream_partial_response_latency_ms",
+    "visible_answer_metric_scope": "sse_start_to_first_partial_response",
+    "partial_response_before_final": true,
+    "debug_record_metric_surface": "streamMetrics"
+  },
+  "cache": {
+    "enabled": true,
+    "quality_bypass_enabled": true,
+    "trace_fields": [
+      "cache_scope",
+      "cache_context_key",
+      "cache_bypass_reason",
+      "cache_bypass_agent"
+    ],
+    "entries": {
+      "AlgorithmIdentifierAgent": {
+        "scope": "workspace_problem",
+        "keys": ["workspace_id", "problem_key", "taxonomy_candidate_space"],
+        "invalidated_by": ["newer_agent_quality_flag:AlgorithmIdentifierAgent"]
+      },
+      "AlgorithmPrimerAgent": {
+        "scope": "workspace_problem_depth",
+        "keys": ["workspace_id", "problem_key", "algorithm_family", "guidance_depth"],
+        "invalidated_by": ["newer_agent_quality_flag:AlgorithmPrimerAgent"]
+      },
+      "PlanDecomposerAgent": {
+        "scope": "active_workspace_plan",
+        "keys": ["workspace_id", "problem_key", "algorithm_family", "guidance_depth", "plan_id"],
+        "invalidated_by": ["newer_agent_quality_flag:PlanDecomposerAgent"]
+      }
+    }
+  },
+  "tools": {
+    "owner_agent": "ManagerAgent",
+    "mcp": {
+      "owner_agent": "ManagerAgent",
+      "trigger_policy": "manager_request_gate",
+      "handoff_policy": "manager_agent_only_until_explicit_specialist_tool_contracts",
+      "v2_specialist_access": "disabled",
+      "enabled_for_agents": []
+    },
+    "local": {
+      "diagram": {
+        "owner_agent": "DiagramAgent",
+        "tool_names": ["diagram_verify_tool", "diagram_scene_materializer"],
+        "access": "local_schema_validated"
+      }
+    }
+  }
+}

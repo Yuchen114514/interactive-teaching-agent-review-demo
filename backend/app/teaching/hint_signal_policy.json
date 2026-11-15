@@ -1,0 +1,55 @@
+{
+  "progress_markers": [
+    "明白",
+    "懂了",
+    "我觉得",
+    "所以",
+    "because",
+    "i think"
+  ],
+  "code_request_markers": [
+    "进入写代码",
+    "进入编码",
+    "进入代码",
+    "开始写代码",
+    "开始编码",
+    "实现计划",
+    "实现要点",
+    "完整代码",
+    "完整 c++",
+    "c++17 代码",
+    "c++ 代码",
+    "给我代码",
+    "提交代码",
+    "代码实现",
+    "enter code",
+    "start coding"
+  ],
+  "debug_request_markers": [
+    "进入 debug",
+    "进入debug",
+    "开始 debug",
+    "开始debug",
+    "enter debug",
+    "start debug"
+  ],
+  "confirmation_markers": [
+    "明白",
+    "懂了",
+    "清楚了",
+    "理解了",
+    "continue",
+    "next"
+  ],
+  "blocker_markers": [
+    "但是",
+    "不过",
+    "还不",
+    "不懂",
+    "卡住",
+    "困惑",
+    "confused",
+    "stuck"
+  ],
+  "progress_encouragement": "很好，你已经抓住了当前步骤里的关键变化。"
+}

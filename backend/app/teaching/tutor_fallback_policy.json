@@ -1,0 +1,15 @@
+{
+  "minimal_template": "",
+  "action_templates": {
+    "give_hint": "",
+    "summarize": "",
+    "confirm_and_advance": "",
+    "enter_debug": "",
+    "enter_code": ""
+  },
+  "depth_templates": {
+    "direct": "",
+    "coached": "",
+    "default": ""
+  }
+}

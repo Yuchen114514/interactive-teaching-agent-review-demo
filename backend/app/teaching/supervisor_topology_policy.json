@@ -1,0 +1,145 @@
+{
+  "nodes": [
+    {
+      "agent_name": "ProblemIdentifierAgent"
+    },
+    {
+      "agent_name": "MemoryManagerAgent",
+      "depends_on": [
+        "ProblemIdentifierAgent"
+      ],
+      "inputs": {
+        "compaction": "workspace_old_visible_turns"
+      }
+    },
+    {
+      "agent_name": "MemoryRetrieverAgent",
+      "depends_on": [
+        "MemoryManagerAgent"
+      ],
+      "inputs": {
+        "scope": "active_workspace"
+      }
+    },
+    {
+      "agent_name": "MemoryConsolidatorAgent",
+      "depends_on": [
+        "MemoryRetrieverAgent"
+      ],
+      "inputs": {
+        "write_policy": "explicit_stable_memory_only"
+      }
+    },
+    {
+      "agent_name": "AlgorithmIdentifierAgent",
+      "depends_on": [
+        "ProblemIdentifierAgent",
+        "MemoryConsolidatorAgent"
+      ],
+      "inputs": {
+        "problem_intent": "{problem_intent}"
+      }
+    },
+    {
+      "agent_name": "AlgorithmPrimerAgent",
+      "depends_on": [
+        "AlgorithmIdentifierAgent"
+      ],
+      "inputs": {
+        "source": "agent_taxonomy_or_policy"
+      }
+    },
+    {
+      "agent_name": "PlanRevisionAgent",
+      "depends_on": [
+        "AlgorithmPrimerAgent"
+      ],
+      "inputs": {
+        "revision_scope": "current_step_only"
+      }
+    },
+    {
+      "agent_name": "PlanDecomposerAgent",
+      "depends_on": [
+        "ProblemIdentifierAgent",
+        "AlgorithmIdentifierAgent",
+        "PlanRevisionAgent"
+      ],
+      "inputs": {
+        "visibility": "current_step_only"
+      }
+    },
+    {
+      "agent_name": "HintPolicyAgent",
+      "depends_on": [
+        "PlanDecomposerAgent"
+      ],
+      "inputs": {
+        "problem_intent": "{problem_intent}"
+      }
+    },
+    {
+      "agent_name": "EncouragementAgent",
+      "depends_on": [
+        "HintPolicyAgent"
+      ],
+      "inputs": {
+        "strategy": "specific_feedback_or_stuck_normalization"
+      }
+    },
+    {
+      "agent_name": "TutorAgent",
+      "depends_on": [
+        "HintPolicyAgent",
+        "EncouragementAgent",
+        "AlgorithmPrimerAgent"
+      ],
+      "inputs": {
+        "expected_action": "{expected_action}"
+      }
+    },
+    {
+      "agent_name": "DiagramAgent",
+      "depends_on": [
+        "TutorAgent"
+      ],
+      "condition": "tutor_output.needs_diagram",
+      "inputs": {
+        "handoff": "diagram_request"
+      }
+    },
+    {
+      "agent_name": "CodingAgent",
+      "depends_on": [
+        "TutorAgent"
+      ],
+      "condition": "hint_policy.action == enter_code",
+      "inputs": {
+        "handoff": "implementation_plan"
+      }
+    },
+    {
+      "agent_name": "DebugAgent",
+      "depends_on": [
+        "TutorAgent"
+      ],
+      "condition": "hint_policy.action == enter_debug",
+      "inputs": {
+        "handoff": "debug_plan"
+      }
+    },
+    {
+      "agent_name": "BoardworkAgent",
+      "depends_on": [
+        "TutorAgent",
+        "DiagramAgent",
+        "CodingAgent",
+        "DebugAgent"
+      ],
+      "condition": "tutor_output.needs_boardwork",
+      "inputs": {
+        "trigger": "current_step_refresh"
+      }
+    }
+  ]
+}

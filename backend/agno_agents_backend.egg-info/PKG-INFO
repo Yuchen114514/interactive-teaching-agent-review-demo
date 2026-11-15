@@ -1,0 +1,34 @@
+Metadata-Version: 2.4
+Name: agno-agents-backend
+Version: 0.1.0
+Summary: Multi-agent FastAPI service powered by Agno
+Author-email: OJ Platform <dev@oj.local>
+Requires-Python: ~=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi>=0.115.0
+Requires-Dist: uvicorn[standard]>=0.30.0
+Requires-Dist: sqlmodel>=0.0.21
+Requires-Dist: greenlet>=3.0.0
+Requires-Dist: psycopg[binary,pool]>=3.2.1
+Requires-Dist: pymysql>=1.1.0
+Requires-Dist: redis>=5.0.8
+Requires-Dist: httpx>=0.27.2
+Requires-Dist: openai>=1.0.0
+Requires-Dist: PyJWT>=2.9.0
+Requires-Dist: mcp>=1.0.0
+Requires-Dist: python-dotenv>=1.0.1
+Requires-Dist: pydantic-settings>=2.5.2
+Requires-Dist: numpy>=2.0.1
+Requires-Dist: alembic>=1.13.2
+Requires-Dist: agno>=0.3.2
+Provides-Extra: embeddings
+Requires-Dist: sentence-transformers>=3.0.1; extra == "embeddings"
+Provides-Extra: dev
+Requires-Dist: ruff>=0.6.5; extra == "dev"
+Requires-Dist: pytest>=8.3.3; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.23.8; extra == "dev"
+
+# English teaching demo backend
+
+This FastAPI package is started from the repository root with `./scripts/run-backend.sh`.
+Its database is an isolated SQLite copy of the public demonstration session; new visitor sessions are stored in the ignored `runtime/` directory.

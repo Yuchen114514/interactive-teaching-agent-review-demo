@@ -1,0 +1,259 @@
+/* Shared semantic colors. The --theme-* aliases exist only in dark mode;
+   legacy declarations retain their exact light-mode values as fallbacks. */
+:root {
+  --app-bg-page: #fff;
+  --app-bg-surface: #f8fafb;
+  --app-bg-raised: #fff;
+  --app-bg-hover: #edf1f5;
+  --app-border-subtle: #dce3e9;
+  --app-border-strong: #7b8b9a;
+  --app-text-primary: #202a35;
+  --app-text-secondary: #536273;
+  --app-text-muted: #6c7a89;
+  --app-accent-oj: #397dcc;
+  --app-accent-agent: #367d73;
+  --app-focus-ring: #397dcc;
+}
+html[data-color-scheme="dark"] {
+  color-scheme: dark;
+  --app-bg-page: #0f141a;
+  --app-bg-surface: #171e26;
+  --app-bg-raised: #1f2933;
+  --app-bg-hover: #263240;
+  --app-border-subtle: #2c3946;
+  --app-border-strong: #64788a;
+  --app-text-primary: #e5ebf1;
+  --app-text-secondary: #b0bcc8;
+  --app-text-muted: #8c9aa8;
+  --app-accent-oj: #94bff0;
+  --app-accent-agent: #8fbdb3;
+  --app-focus-ring: #99c6ff;
+  --theme-ink-primary: var(--app-text-primary);
+  --theme-ink-secondary: var(--app-text-secondary);
+  --theme-ink-muted: var(--app-text-muted);
+  --theme-ink-danger: #d99b98;
+  --theme-ink-warning: #d4b57a;
+  --theme-ink-success: #95c9a4;
+  --theme-ink-info: #9cbfde;
+  --theme-surface-raised: var(--app-bg-raised);
+  --theme-surface-soft: #1b2530;
+  --theme-surface-faint: rgb(229 235 241 / 5%);
+  --theme-surface-inverse: #2a414c;
+  --theme-surface-success: #1d3429;
+  --theme-surface-danger: #382629;
+  --theme-surface-warning: #352f22;
+  --theme-surface-info: #22313f;
+  --theme-border: var(--app-border-subtle);
+  --theme-shadow: rgb(0 0 0 / 28%);
+  --theme-highlight: rgb(204 224 244 / 7%);
+  --el-bg-color: var(--app-bg-surface);
+  --el-bg-color-page: var(--app-bg-page);
+  --el-bg-color-overlay: var(--app-bg-raised);
+  --el-text-color-primary: var(--app-text-primary);
+  --el-text-color-regular: var(--app-text-secondary);
+  --el-text-color-secondary: var(--app-text-muted);
+  --el-text-color-placeholder: var(--app-text-muted);
+  --el-text-color-disabled: #7f8b98;
+  --el-border-color: var(--app-border-strong);
+  --el-border-color-light: var(--app-border-subtle);
+  --el-border-color-lighter: var(--app-border-subtle);
+  --el-fill-color-blank: var(--app-bg-surface);
+  --el-fill-color: var(--app-bg-hover);
+  --el-fill-color-light: var(--app-bg-raised);
+  --el-fill-color-lighter: #1b2530;
+  --el-fill-color-extra-light: #1b2530;
+  --el-fill-color-dark: #263240;
+  --el-fill-color-darker: #2c3946;
+  --el-fill-color-disabled: #202b36;
+  --el-color-primary: #94bff0;
+  --el-color-primary-light-3: #6e96c1;
+  --el-color-primary-light-5: #46668a;
+  --el-color-primary-light-7: #2e435c;
+  --el-color-primary-light-8: #26394e;
+  --el-color-primary-light-9: #22313f;
+  --el-color-primary-dark-2: #b2d3f6;
+  --el-color-success: #95c9a4;
+  --el-color-success-light-3: #709d7e;
+  --el-color-success-light-5: #4b7157;
+  --el-color-success-light-7: #314d3b;
+  --el-color-success-light-8: #263e2f;
+  --el-color-success-light-9: #1d3429;
+  --el-color-warning: #d4b57a;
+  --el-color-warning-light-3: #a98e5c;
+  --el-color-warning-light-5: #796440;
+  --el-color-warning-light-7: #55472f;
+  --el-color-warning-light-8: #433a28;
+  --el-color-warning-light-9: #352f22;
+  --el-color-danger: #d99b98;
+  --el-color-danger-light-3: #ae7473;
+  --el-color-danger-light-5: #7b5154;
+  --el-color-danger-light-7: #57373d;
+  --el-color-danger-light-8: #462d33;
+  --el-color-danger-light-9: #382629;
+  --el-color-error: #d99b98;
+  --el-color-info: #a5bdd8;
+  --el-color-info-light-9: #253142;
+  --el-mask-color: rgb(5 9 14 / 68%);
+  --el-mask-color-extra-light: rgb(15 20 26 / 72%);
+}
+html, body { background-color: var(--app-bg-page); color: var(--app-text-primary); }
+html[data-color-scheme="dark"] ::selection { background: #385873; color: #f0f5fb; }
+html[data-color-scheme="dark"] :focus-visible { outline-color: var(--app-focus-ring); }
+html[data-color-scheme="dark"] input,
+html[data-color-scheme="dark"] textarea { caret-color: var(--app-text-primary); }
+html[data-color-scheme="dark"] :where(input, textarea)::placeholder { color: var(--app-text-muted); }
+html[data-color-scheme="dark"] :where(.ac-header, .el-menu--horizontal) { background-color: var(--app-bg-surface); }
+html[data-color-scheme="dark"] .ac-footer { background-color: var(--app-bg-surface); color: var(--app-text-secondary); }
+html[data-color-scheme="dark"] :where(.bg-white, .bg-gray-50, .bg-slate-50, .bg-blue-50) { background-color: var(--app-bg-surface); }
+html[data-color-scheme="dark"] :where(.text-black, .text-gray-900, .text-gray-800, .text-slate-900) { color: var(--app-text-primary); }
+html[data-color-scheme="dark"] :where(.text-gray-700, .text-gray-600, .text-gray-500, .text-slate-500) { color: var(--app-text-secondary); }
+html[data-color-scheme="dark"] :where(.text-gray-400, .text-slate-400) { color: var(--app-text-muted); }
+html[data-color-scheme="dark"] :where(.text-red-500, .text-red-600) { color: var(--theme-ink-danger); }
+html[data-color-scheme="dark"] :where(.text-green-500, .text-green-600) { color: var(--theme-ink-success); }
+html[data-color-scheme="dark"] :where(.text-blue-500, .text-blue-600) { color: var(--app-accent-oj); }
+html[data-color-scheme="dark"] .el-button--primary:not(.is-plain):not(.is-text):not(.is-link),
+html[data-color-scheme="dark"] .el-button--success:not(.is-plain):not(.is-text):not(.is-link),
+html[data-color-scheme="dark"] .el-button--warning:not(.is-plain):not(.is-text):not(.is-link),
+html[data-color-scheme="dark"] .el-button--danger:not(.is-plain):not(.is-text):not(.is-link) { --el-button-text-color: #101821; --el-button-hover-text-color: #101821; --el-button-active-text-color: #101821; }
+
+/* The independent home header shares the same switch as the OJ navigation. */
+.home-appearance-control { margin-right: 12px; }
+.home-appearance-control .appearance-toggle { color: #f2f6fa; background: rgb(15 20 26 / 35%); }
+html[data-color-scheme="dark"] .blurred-wrapper::after { content: ''; position: absolute; inset: 0; background: rgb(9 17 27 / 48%); pointer-events: none; }
+html[data-color-scheme="dark"] .blurred-wrapper :where(.main-header, .hero, .text-center) { position: relative; z-index: 1; }
+html[data-color-scheme="dark"] .blurred-wrapper .glass-text::before { background: var(--app-bg-raised); }
+
+/* Body-teleported Agent surfaces inherit the root theme, including settings
+   and legacy entry points. Shadow placement and compositing remain untouched. */
+html[data-color-scheme="dark"] .agent-showcase-root {
+  --agent-typing-dot: #a7becb;
+  --agent-loading-glint: rgba(170, 211, 229, .28);
+  --agent-surface-tint: rgb(23 30 38 / 96%);
+  --agent-surface-tint-strong: #1f2933;
+  --agent-surface-bg: #171e26;
+  --agent-surface-bg-strong: #1f2933;
+  --agent-surface-border: #2c3946;
+  --agent-surface-inner: inset 0 1px 0 rgb(204 224 244 / 7%), inset 0 -1px 0 rgb(0 0 0 / 12%);
+  --agent-surface-shadow: 0 18px 46px rgb(0 0 0 / 25%), var(--agent-surface-inner);
+  --agent-capsule-border: 1px solid #344352;
+  --agent-capsule-outer-shadow: 0 12px 30px rgb(0 0 0 / 24%);
+  --agent-capsule-shadow: var(--agent-capsule-outer-shadow), var(--agent-surface-inner);
+  --os-handle-bg: rgb(173 191 210 / 38%);
+  --os-handle-bg-hover: rgb(173 191 210 / 55%);
+  --os-handle-bg-active: rgb(173 191 210 / 65%);
+  color: var(--app-text-primary);
+}
+html[data-color-scheme="dark"] .agent-workspace-shell.agent-showcase-root { border-color: #344352; box-shadow: 0 30px 70px rgb(0 0 0 / 36%), var(--agent-surface-inner); }
+html[data-color-scheme="dark"] .agent-workspace-body.showcase-shell { background-color: var(--app-bg-page); --agent-compat-fill: var(--app-bg-page); }
+html[data-color-scheme="dark"] .agent-showcase-root :where(.composer-card, .teaching-float, .session-rail) { background-color: var(--app-bg-surface); --agent-compat-fill: var(--app-bg-surface); }
+html[data-color-scheme="dark"] .agent-showcase-root :where(.message-bubble, .whiteboard-card, .float-section, .diagram-mini-card) { border-color: var(--app-border-subtle); }
+html[data-color-scheme="dark"] .agent-showcase-root .chat-message.user .message-bubble { background: #284145; --agent-compat-fill: #284145; color: var(--app-text-primary); }
+html[data-color-scheme="dark"] .agent-showcase-root .chat-message.system .message-bubble { background: #22313f; --agent-compat-fill: #22313f; color: var(--app-text-secondary); }
+html[data-color-scheme="dark"] .agent-showcase-root :where(.send-button, .new-chat-button, .inline-message-editor-submit) { background: #8fbdb3; color: #101b20; }
+html[data-color-scheme="dark"] .agent-showcase-root :where(.send-button:hover, .new-chat-button:hover) { background: #a6cdc4; }
+html[data-color-scheme="dark"] .agent-showcase-root :where(.diagram-mini-card.is-selected, .agent-settings-skin-list > button.is-selected) { background: #233d3a; border-color: #537f75; }
+html[data-color-scheme="dark"] .agent-showcase-root :where(.problem-action-pill, .problem-page-chip, .session-problem-tag) { color: #95c9a4; background: #1d3429; }
+html[data-color-scheme="dark"] .agent-settings-error { color: #d99b98; background: #382629; }
+html[data-color-scheme="dark"] .agent-workspace-shell .agent-settings-panel { background: var(--app-bg-raised); }
+html[data-color-scheme="dark"] .mascot-label { background: var(--app-bg-raised); color: var(--app-text-primary); border-color: var(--app-border-subtle); }
+
+/* Markdown, third-party editors, samples and syntax highlighting. The few
+   !important declarations override inline defaults emitted by mavon-editor. */
+html[data-color-scheme="dark"] .v-note-wrapper,
+html[data-color-scheme="dark"] .v-note-wrapper .v-note-panel,
+html[data-color-scheme="dark"] .v-note-wrapper .v-note-edit,
+html[data-color-scheme="dark"] .v-note-wrapper .v-note-show,
+html[data-color-scheme="dark"] .v-note-wrapper .v-note-op,
+html[data-color-scheme="dark"] .v-note-wrapper .v-show-content,
+html[data-color-scheme="dark"] .v-note-wrapper .content-input-wrapper,
+html[data-color-scheme="dark"] .v-note-wrapper .auto-textarea-wrapper,
+html[data-color-scheme="dark"] .v-note-wrapper textarea {
+  background-color: var(--app-bg-surface) !important;
+  color: var(--app-text-primary) !important;
+  border-color: var(--app-border-subtle);
+}
+html[data-color-scheme="dark"] .v-note-wrapper .op-icon { color: var(--app-text-secondary); }
+html[data-color-scheme="dark"] .markdown-body { color: var(--app-text-primary); background-color: transparent; }
+html[data-color-scheme="dark"] .markdown-body :where(h1,h2,h3,h4,h5,h6) { color: var(--app-text-primary); border-color: var(--app-border-subtle); }
+html[data-color-scheme="dark"] .markdown-body a { color: var(--app-accent-oj); }
+html[data-color-scheme="dark"] :where(.markdown-body, .message-content) blockquote { color: var(--app-text-secondary); border-color: #64788a; background: #1b2530; }
+html[data-color-scheme="dark"] .markdown-body table :where(tr,th,td) { background-color: var(--app-bg-surface); border-color: var(--app-border-subtle); color: var(--app-text-primary); }
+html[data-color-scheme="dark"] :where(.markdown-body, .message-content) :not(pre) > code { color: #b5d4ed; background: #263240; }
+html[data-color-scheme="dark"] :where(.markdown-body pre, .message-content pre, .code-block, .diagram-scene-code, .hljs) { color: #d5e1ed; background: #10171f; }
+html[data-color-scheme="dark"] .code-block :where(pre, .hljs),
+html[data-color-scheme="dark"] .markdown-body pre code { background: transparent; color: inherit; }
+html[data-color-scheme="dark"] :where(.hljs-keyword,.hljs-selector-tag,.hljs-literal) { color: #c4a6df; }
+html[data-color-scheme="dark"] :where(.hljs-string,.hljs-attr,.hljs-addition) { color: #a8c9a0; }
+html[data-color-scheme="dark"] :where(.hljs-number,.hljs-symbol,.hljs-built_in) { color: #dfba8b; }
+html[data-color-scheme="dark"] :where(.hljs-comment,.hljs-quote) { color: #8c9aa8; }
+html[data-color-scheme="dark"] :where(.hljs-title,.hljs-function) { color: #94bff0; }
+html[data-color-scheme="dark"] :where(.hljs-deletion) { color: #d99b98; }
+html[data-color-scheme="dark"] .katex { color: inherit; }
+
+/* Semantic SVG content is recolored, never user-uploaded images or media. */
+html[data-color-scheme="dark"] .agent-showcase-root .diagram-scene-preview { background: #151e27; border-color: var(--app-border-subtle); }
+html[data-color-scheme="dark"] .agent-showcase-root .diagram-preview-item :where(rect,circle) { fill: #263240; stroke: #64788a; }
+html[data-color-scheme="dark"] .agent-showcase-root .diagram-preview-item.is-frame rect { fill: rgb(31 41 51 / 50%); }
+html[data-color-scheme="dark"] .agent-showcase-root .diagram-preview-item.is-highlighted :where(rect,circle) { fill: #284842; stroke: #8fbdb3; }
+html[data-color-scheme="dark"] .agent-showcase-root .diagram-preview-item text { fill: var(--app-text-primary); }
+html[data-color-scheme="dark"] .agent-showcase-root :where(.diagram-preview-edge, .diagram-scene-preview marker path) { stroke: #8c9aa8; }
+html[data-color-scheme="dark"] .agent-showcase-root .diagram-scene-preview marker path { fill: #8c9aa8; }
+html[data-color-scheme="dark"] .agent-showcase-root .diagram-preview-edge.is-highlighted { stroke: #8fbdb3; }
+html[data-color-scheme="dark"] .agent-showcase-root .inline-diagram-controls button {
+  color: #d1e1e7;
+  background: #263746;
+  border-color: rgb(193 216 227 / 13%);
+  box-shadow: 0 3px 12px rgb(0 0 0 / 18%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .appearance-toggle { transition: color 150ms ease, background-color 150ms ease; }
+}
+html[data-color-scheme="dark"] .day-data-default.data-level-1 { background: #22313f; color: #a5bdd8; }
+html[data-color-scheme="dark"] .day-data-default.data-level-2 { background: #304c69; color: #b7d1ee; }
+html[data-color-scheme="dark"] .day-data-default.data-level-3 { background: #476c93; color: #edf4fb; }
+html[data-color-scheme="dark"] .day-data-default.data-level-4 { background: #87b0dc; color: #101821; }
+html[data-color-scheme="dark"] .el-radio-group { --el-radio-button-checked-text-color: #101821; }
+html[data-color-scheme="dark"] .agent-showcase-root .agent-overlay-scroll.os-theme-agent > .os-scrollbar {
+  --os-handle-bg: rgb(173 191 210 / 38%);
+  --os-handle-bg-hover: rgb(173 191 210 / 55%);
+  --os-handle-bg-active: rgb(173 191 210 / 65%);
+}
+html[data-color-scheme="dark"] .agent-showcase-root .composer-image-strip { scrollbar-color: #64788a transparent; }
+/* mavon-editor's nested markdown selectors outrank the general code rules. */
+html[data-color-scheme="dark"] .v-note-wrapper .v-note-panel pre,
+html[data-color-scheme="dark"] .markdown-body .highlight pre,
+html[data-color-scheme="dark"] .markdown-body pre { background-color: #10171f; color: #d5e1ed; }
+html[data-color-scheme="dark"] .el-button--info:not(.is-plain):not(.is-text):not(.is-link) {
+  --el-button-text-color: #101821;
+  --el-button-hover-text-color: #101821;
+  --el-button-active-text-color: #101821;
+}
+html[data-color-scheme="dark"] .agent-settings-scrim { background: rgb(5 9 14 / 64%); }
+
+/* Idle icons share the capsule surface rather than adding nested discs. */
+html[data-color-scheme="dark"] .agent-showcase-root
+  :is(.agent-header-button, .agent-close-button, .icon-button):not(.is-active):not(.is-selected):not([aria-pressed="true"]) {
+  background: transparent;
+  box-shadow: none;
+}
+html[data-color-scheme="dark"] .agent-showcase-root .depth-active-bg { background: none; }
+
+/* Keep progress markers distinct from the dark panel and completed steps. */
+html[data-color-scheme="dark"] .agent-showcase-root .step-dot-row i { background: #64788a; }
+html[data-color-scheme="dark"] .agent-showcase-root .step-dot-row.is-reached i { background: #739d87; }
+html[data-color-scheme="dark"] .agent-showcase-root .step-dot-row.is-current i {
+  background: var(--app-accent-agent);
+  box-shadow: 0 0 0 3px rgb(143 189 179 / 20%);
+}
+
+html[data-color-scheme="dark"] .agent-showcase-root .session-row.is-selected {
+  --agent-row-fill: #2a3846;
+  --agent-row-stroke: transparent;
+}
+
+@supports not (corner-shape: squircle) {
+  html[data-color-scheme="dark"] .agent-showcase-root :is(.composer-card, .teaching-float, .session-rail) {
+    --agent-compat-fill: var(--app-bg-surface);
+  }
+}

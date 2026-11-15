@@ -1,0 +1,85 @@
+{
+  "new_problem_markers": [
+    "换一道",
+    "换一题",
+    "新题",
+    "新题目",
+    "另一题",
+    "another problem",
+    "new problem"
+  ],
+  "explicit_workspace_followup_markers": [
+    "画",
+    "图",
+    "不会",
+    "不知道",
+    "不懂",
+    "没懂",
+    "什么意思",
+    "啥意思",
+    "什么含义",
+    "这是什么意思",
+    "解释一下",
+    "展开讲讲",
+    "为什么",
+    "怎么",
+    "怎么想",
+    "每一步",
+    "恢复",
+    "样例",
+    "例子",
+    "继续",
+    "上一步",
+    "这一步",
+    "当前",
+    "debug",
+    "代码",
+    "实现",
+    "提交",
+    "C++",
+    "C++17",
+    "python",
+    "java",
+    "code",
+    "implementation",
+    "submit"
+  ],
+  "problem_statement_min_chars": 80,
+  "problem_statement_min_marker_hits": 2,
+  "problem_statement_min_lines": 3,
+  "problem_statement_markers": [
+    "输入",
+    "输出",
+    "样例",
+    "题目",
+    "给定",
+    "求",
+    "n",
+    "input",
+    "output",
+    "sample"
+  ],
+  "workspace_reference_markers": {
+    "previous": [
+      "上面那道题",
+      "上面那道",
+      "上面那题",
+      "上面那个",
+      "上一题",
+      "前一道题",
+      "前面那道",
+      "前面那题",
+      "前面那个",
+      "上一个问题",
+      "前一个问题"
+    ],
+    "first": [
+      "第一题",
+      "最开始那题"
+    ],
+    "latest": [
+      "当前这题",
+      "这道题"
+    ]
+  }
+}

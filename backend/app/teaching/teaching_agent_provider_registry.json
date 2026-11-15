@@ -1,0 +1,83 @@
+{
+  "adapter_prompt": {
+    "instruction": "Return exactly one compact JSON object matching required_schema. No markdown. Student-visible strings must be concise Simplified Chinese unless the latest user message is clearly in another language. Reason and rationale fields must be stable snake_case codes under 32 characters."
+  },
+  "agno_agent_defaults": {
+    "description_template": "You are {agent_name}, a specialist node in an OJ teaching multi-agent workflow.",
+    "instructions": [
+      "Return only one JSON object.",
+      "Do not include markdown fences, prose, hidden reasoning, fixed solutions, or code unless the schema explicitly requires it."
+    ]
+  },
+  "agents": {
+    "MainDialogAgent": {
+      "capabilities": ["main_dialog_turn"],
+      "prompt_spec": "MainDialogAgent"
+    },
+    "TeachingSupervisor": {
+      "capabilities": ["supervisor_schedule", "supervisor_route", "supervisor_topology"],
+      "prompt_spec": "TeachingSupervisor",
+      "schemas": {
+        "supervisor_schedule": "teaching_supervisor_schedule",
+        "supervisor_route": "teaching_supervisor_route",
+        "supervisor_topology": "teaching_supervisor_topology"
+      }
+    },
+    "ProblemIdentifierAgent": {
+      "capabilities": ["problem_decision"],
+      "prompt_spec": "ProblemIdentifierAgent"
+    },
+    "AlgorithmIdentifierAgent": {
+      "capabilities": ["algorithm_family"],
+      "prompt_spec": "AlgorithmIdentifierAgent"
+    },
+    "AlgorithmPrimerAgent": {
+      "capabilities": ["algorithm_primer"],
+      "prompt_spec": "AlgorithmPrimerAgent"
+    },
+    "PlanRevisionAgent": {
+      "capabilities": ["plan_revision"],
+      "prompt_spec": "PlanRevisionAgent"
+    },
+    "MemoryManagerAgent": {
+      "capabilities": ["workspace_summary"],
+      "prompt_spec": "MemoryManagerAgent"
+    },
+    "PlanDecomposerAgent": {
+      "capabilities": ["plan"],
+      "prompt_spec": "PlanDecomposerAgent"
+    },
+    "HintPolicyAgent": {
+      "capabilities": ["hint_policy"],
+      "prompt_spec": "HintPolicyAgent"
+    },
+    "EncouragementAgent": {
+      "capabilities": ["encouragement_strategy"],
+      "prompt_spec": "EncouragementAgent"
+    },
+    "TutorAgent": {
+      "capabilities": ["tutor_response"],
+      "prompt_spec": "TutorAgent"
+    },
+    "MemoryConsolidatorAgent": {
+      "capabilities": ["memory_candidates"],
+      "prompt_spec": "MemoryConsolidatorAgent"
+    },
+    "BoardworkAgent": {
+      "capabilities": ["boardwork_handoff"],
+      "prompt_spec": "BoardworkAgent"
+    },
+    "DiagramAgent": {
+      "capabilities": ["diagram_handoff"],
+      "prompt_spec": "DiagramAgent"
+    },
+    "CodingAgent": {
+      "capabilities": ["coding_handoff"],
+      "prompt_spec": "CodingAgent"
+    },
+    "DebugAgent": {
+      "capabilities": ["debug_handoff"],
+      "prompt_spec": "DebugAgent"
+    }
+  }
+}

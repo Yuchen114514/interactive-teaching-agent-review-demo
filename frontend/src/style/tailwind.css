@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* global.css */
+body,
+html {
+  font-family: 'Monaco', serif;
+}

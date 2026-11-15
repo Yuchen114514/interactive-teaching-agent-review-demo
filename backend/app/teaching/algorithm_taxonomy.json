@@ -1,0 +1,70 @@
+{
+  "families": [
+    {
+      "family_id": "difference_array",
+      "display_name": "差分",
+      "description": "适合把多次区间更新转化为边界变化，再用前缀累积还原状态。",
+      "teaching_dimensions": ["range_update", "boundary_delta", "prefix_restore"],
+      "classification_evidence": [
+        ["区间", "更新"],
+        ["区间", "加"],
+        ["range", "update"]
+      ],
+      "primer_guidance": {
+        "direct": "直接点出差分思想并说明边界变化。",
+        "coached": "先解释区间更新如何只改两个边界，再做小检查。",
+        "socratic": "引导学生发现每次区间操作只影响边界。",
+        "minimal": "给出差分、不变量和实现检查点。"
+      }
+    },
+    {
+      "family_id": "greedy",
+      "display_name": "贪心",
+      "description": "适合每一步局部选择都能由交换论证或不变量支撑的题目。",
+      "teaching_dimensions": ["choice", "invariant", "exchange_argument"],
+      "classification_evidence": [
+        ["每次", "代价", "最短"],
+        ["最快", "较慢"],
+        ["最小", "总代价"],
+        ["局部", "最优"],
+        ["交换", "论证"]
+      ],
+      "primer_guidance": {}
+    },
+    {
+      "family_id": "sorting",
+      "display_name": "排序",
+      "description": "适合通过重排建立顺序关系、相邻关系或扫描条件的题目。",
+      "teaching_dimensions": ["ordering", "scan", "adjacent_relation"],
+      "primer_guidance": {}
+    },
+    {
+      "family_id": "binary_search",
+      "display_name": "二分",
+      "description": "适合答案或状态存在单调性的题目。",
+      "teaching_dimensions": ["monotonicity", "check_function", "boundary"],
+      "primer_guidance": {}
+    },
+    {
+      "family_id": "dp",
+      "display_name": "动态规划",
+      "description": "适合存在重叠子问题和可递推状态的题目。",
+      "teaching_dimensions": ["state", "transition", "initialization", "order"],
+      "primer_guidance": {}
+    },
+    {
+      "family_id": "graph",
+      "display_name": "图论",
+      "description": "适合围绕点、边、连通、路径或拓扑关系建模的题目。",
+      "teaching_dimensions": ["nodes_edges", "reachability", "path_or_structure"],
+      "primer_guidance": {}
+    },
+    {
+      "family_id": "unknown",
+      "display_name": "待识别",
+      "description": "题目算法族还不明确时使用。",
+      "teaching_dimensions": [],
+      "primer_guidance": {}
+    }
+  ]
+}

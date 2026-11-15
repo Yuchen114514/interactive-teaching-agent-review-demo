@@ -1,0 +1,73 @@
+[
+  {
+    "id": 1000001,
+    "title": "Two Sum",
+    "topic": "Hash maps",
+    "difficulty": "Easy",
+    "timeLimit": "1 s",
+    "memoryLimit": "256 MB",
+    "statement": "Given an array of integers and a target, find the indices of two distinct elements whose sum equals the target. Exactly one answer exists. Return the indices in ascending order. Indices are zero based.",
+    "input": "The first line contains n and target. The second line contains n integers.",
+    "output": "Print the two zero-based indices in ascending order.",
+    "constraints": "2 <= n <= 100000; -1000000000 <= each value, target <= 1000000000.",
+    "examples": [{"input": "4 9\n2 7 11 15", "output": "0 1", "explanation": "2 + 7 = 9."}]
+  },
+  {
+    "id": 1000002,
+    "title": "Longest Increasing Subsequence",
+    "topic": "Dynamic programming",
+    "difficulty": "Medium",
+    "timeLimit": "2 s",
+    "memoryLimit": "256 MB",
+    "statement": "Given an integer sequence, find the length of its longest strictly increasing subsequence. A subsequence keeps the original order but may skip elements.",
+    "input": "The first line contains n. The second line contains n integers.",
+    "output": "Print one integer: the maximum subsequence length.",
+    "constraints": "1 <= n <= 100000; -1000000000 <= each value <= 1000000000.",
+    "examples": [{"input": "6\n10 9 2 5 3 7", "output": "3", "explanation": "One longest subsequence is 2, 3, 7."}]
+  },
+  {
+    "id": 1000003,
+    "title": "Shortest Path in an Unweighted Graph",
+    "topic": "Breadth-first search",
+    "difficulty": "Medium",
+    "timeLimit": "2 s",
+    "memoryLimit": "256 MB",
+    "statement": "Given an undirected unweighted graph, find the minimum number of edges from vertex 1 to vertex n. Print -1 if n is unreachable.",
+    "input": "The first line contains n and m. Each of the next m lines contains an undirected edge u v.",
+    "output": "Print the shortest distance from 1 to n, or -1 if no path exists.",
+    "constraints": "2 <= n <= 100000; 0 <= m <= 200000; 1 <= u, v <= n.",
+    "examples": [{"input": "4 3\n1 2\n2 3\n3 4", "output": "3", "explanation": "The path 1 -> 2 -> 3 -> 4 uses three edges."}]
+  },
+  {
+    "id": 1000004,
+    "title": "Four-Platform Cargo Transfer",
+    "topic": "State-space search",
+    "difficulty": "Medium",
+    "timeLimit": "2 s",
+    "memoryLimit": "256 MB",
+    "statement": "There are four platforms labeled A, B, C, and D. Platform A initially holds n crates stacked by size, with crate 1 (the smallest) on top and crate n (the largest) at the bottom. The other platforms are empty. In one move, take the top crate from one platform and place it on another. A larger crate may never be placed above a smaller crate. Move the entire stack to D using the fewest moves. All four platforms may be used throughout the process.",
+    "input": "One integer n, the number of crates.",
+    "output": "Print the minimum number of moves needed to transfer the entire stack from A to D.",
+    "constraints": "1 <= n <= 8. Each move transfers exactly one crate, and every intermediate stack must obey the size rule.",
+    "examples": [
+      {"input": "4", "output": "9", "explanation": "The spare platform lets four crates reach D in nine moves."},
+      {"input": "5", "output": "13", "explanation": "Move the two smallest crates to a spare platform in 3 moves, transfer the remaining three using the other three platforms in 7 moves, then place the parked pair on D in 3 moves."}
+    ]
+  },
+  {
+    "id": 1000005,
+    "title": "The Archive's Two Marks",
+    "topic": "Ordered index maintenance",
+    "difficulty": "Hard",
+    "timeLimit": "3 s",
+    "memoryLimit": "256 MB",
+    "statement": "An archive stores distinct integer IDs in a binary search hierarchy: smaller IDs go left and larger IDs go right. Each record carries either an ember mark or an ink mark. Missing children count as ink. The root must be ink, an ember record cannot have an ember child, and every path from the root to a missing child must contain the same number of ink records. Insert the IDs in the given order. A new record starts as ember. If its parent is ember, repair the hierarchy as follows. The parent's sibling is the uncle. If the uncle is ember, change the parent and uncle to ink, change the grandparent to ember, and continue repairing from the grandparent. Otherwise, first straighten a zigzag: if the parent is a left child and the current record is its right child, set the current record to its parent and rotate left there; if the parent is a right child and the current record is its left child, set the current record to its parent and rotate right there. Recompute the current record's parent and grandparent. Change that parent to ink and the grandparent to ember, then rotate right at the grandparent if the parent is on the left, or left if the parent is on the right. After each insertion's repairs, mark the root ink. Rotations preserve the binary search order.",
+    "input": "The first line contains q. The second line contains q distinct integer IDs in insertion order.",
+    "output": "After all insertions, print the records in breadth-first order as ID:mark tokens separated by spaces. Use the lowercase words ember and ink for marks. Do not print missing children.",
+    "constraints": "1 <= q <= 100000; 1 <= each ID <= 1000000000; all IDs are distinct.",
+    "examples": [
+      {"input": "4\n10 20 30 15", "output": "20:ink 10:ink 30:ink 15:ember", "explanation": "The first three insertions require a rotation. Inserting 15 then changes the marks of its parent, uncle, and grandparent."},
+      {"input": "3\n10 20 15", "output": "15:ink 10:ember 20:ember", "explanation": "The third insertion creates a zigzag, so one rotation straightens it and another brings 15 to the root."}
+    ]
+  }
+]

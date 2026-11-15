@@ -1,0 +1,36 @@
+{
+  "boardwork_requirements": [
+    "current_step_only",
+    "event_sourced",
+    "no_solution_content"
+  ],
+  "coding_checkpoints": [
+    "variables",
+    "state_update_order",
+    "boundaries",
+    "code_skeleton"
+  ],
+  "debug_checkpoints": [
+    "failure_observation",
+    "reproduction_input",
+    "state_trace",
+    "patch_target"
+  ],
+  "diagram_requirements": [
+    "model_generated_scene",
+    "current_step_only",
+    "no_static_layout"
+  ],
+  "agent_required_requirements": {
+    "boardwork": [
+      "current_step_only",
+      "event_sourced",
+      "no_solution_content"
+    ],
+    "diagram": [
+      "model_generated_scene",
+      "current_step_only",
+      "no_static_layout"
+    ]
+  }
+}

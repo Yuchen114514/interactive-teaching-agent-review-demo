@@ -1,0 +1,25 @@
+{
+  "markers": [
+    "solution_code",
+    "patch_code",
+    "fixed_solution",
+    "fixed_diagram",
+    "diagram_layout",
+    "hard-coded",
+    "hard_coded",
+    "硬编码",
+    "写死",
+    "固定题图",
+    "固定布局",
+    "固定答案",
+    "answer_template",
+    "future_steps",
+    "d[l]",
+    "d[r",
+    "ans =",
+    "for",
+    "while",
+    "def",
+    "class"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "intro_step": {
+    "step_key": "understand_problem",
+    "title_template": "理解题目目标：{problem_anchor}",
+    "teaching_goal": "确认题目要求、输入输出和需要维护的状态。",
+    "expected_student_action": "复述题目目标或指出关键数据对象。",
+    "mastery_criteria": "学生能说清楚目标状态和操作含义。"
+  },
+  "dimension_step": {
+    "step_key_template": "dimension_{dimension}",
+    "title_template": "{family_display_name}：{dimension}",
+    "teaching_goal_template": "围绕 {family_display_name} 的 {dimension} 维度推进理解。",
+    "expected_student_action": "说明这个维度如何约束当前题目的解法。",
+    "mastery_criteria": "学生能把该维度和题目条件联系起来。"
+  },
+  "closing_steps": [
+    {
+      "step_key": "implementation_plan",
+      "title_template": "形成实现计划",
+      "teaching_goal": "把已确认的思路转成可编码的步骤。",
+      "expected_student_action": "列出关键变量、循环顺序或函数边界。",
+      "mastery_criteria": "学生能写出实现骨架。"
+    },
+    {
+      "step_key": "debug_readiness",
+      "title_template": "进入编码与调试",
+      "teaching_goal": "检查边界、样例和潜在错误点。",
+      "expected_student_action": "提交当前代码或定位当前错误。",
+      "mastery_criteria": "学生能用样例解释代码行为。"
+    }
+  ]
+}

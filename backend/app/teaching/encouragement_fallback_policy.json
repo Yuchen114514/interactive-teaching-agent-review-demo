@@ -1,0 +1,7 @@
+{
+  "normalize_stuck_prefix": "",
+  "normalize_stuck_rationale": "local_visible_fallback_disabled",
+  "positive_prefix_template": "",
+  "positive_rationale": "local_visible_fallback_disabled",
+  "neutral_rationale": "local_visible_fallback_disabled"
+}

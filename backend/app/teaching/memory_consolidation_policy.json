@@ -1,0 +1,33 @@
+{
+  "preference_markers": [
+    "我喜欢",
+    "我更喜欢",
+    "希望以后",
+    "prefer",
+    "i like"
+  ],
+  "weakness_markers": [
+    "总是卡",
+    "经常卡",
+    "容易漏",
+    "不太会",
+    "总忘",
+    "usually stuck",
+    "often miss"
+  ],
+  "solution_like_markers": [
+    "d[l]",
+    "d[r",
+    "+=",
+    "-=",
+    "return ",
+    "for ",
+    "while ",
+    "def "
+  ],
+  "preference_confidence": 0.85,
+  "preference_importance": 0.6,
+  "weakness_confidence": 0.82,
+  "weakness_importance": 0.7,
+  "max_content_length": 160
+}
