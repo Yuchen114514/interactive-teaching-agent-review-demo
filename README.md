@@ -1,4 +1,12 @@
-# Interactive teaching agent: English review demo
+# ACCoding Agent: Interactive Program Comprehension Demo
+
+Companion implementation for **ACCoding Agent: A Persistent Workspace for Interactive Program Comprehension**.
+
+**Authors:** Yuchen Zhang, Jiaqi Zhong, Jiaxu Min, Jingsa Xue, Wenshuai Xu, Yilong Yang, and You Song.  
+**Affiliation:** School of Software, Beihang University, Beijing, China.  
+**Maintainer:** [Yuchen Zhang](https://github.com/Yuchen114514).
+
+[Hosted English demo](http://39.103.85.225:3000/en-demo/home) · [Demonstration video](https://youtu.be/oEcuqJ-JNj4)
 
 This repository contains the English research demo frontend, its FastAPI agent backend, a five-problem catalog, and one read-only example conversation. The original production online judge and other users' conversations are not included. New conversations belong to each browser's demo visitor identity and persist in the local SQLite database.
 
